@@ -1,4 +1,9 @@
 html {
 	font-family: 'Reenie Beanie', cursive;
 	/*font-family: 'Megrim', cursive;*/
+	text-align: center;
+}
+
+#song-titles {
+	padding-bottom: 30px;
 }

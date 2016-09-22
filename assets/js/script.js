@@ -23,55 +23,57 @@
 // Artwork
 
 $(document).ready(function() {
-
 	SC.initialize({
 	  client_id: "9a1358c581fbce53ea61cd78cd57768f"
 	});
+});
 
-	$("#search-sc-button").click(function() {
-		artist = $("#artist-input").val();
-		SC.get('/tracks', {q: artist}).then(function(tracks) {
-			i = 0;
-			tracklist = tracks;
-			console.log(tracklist);
-		});
+$("#search-sc-button").click(function() {
+	artist = $("#artist-input").val();
+	SC.get('/tracks', {q: artist}).then(function(tracks) {
+		i = 0;
+		tracklist = tracks;
+		tracklist.map(function(tracklist) {
+			$("#song-titles").append(tracklist.title + "<br>");
+		})
 	});
+});
 
-	$("#play-button").click(function() {
-		SC.stream('/tracks/' + tracklist[i].id).then(function(player){
-	  		player.play();
-	  		assign_information(i);
-		});
+$("#play-button").click(function() {
+	SC.stream('/tracks/' + tracklist[i].id).then(function(player){
+  		player.play();
+  		assign_information(i);
 	});
+});
 
-	$("#stop-button").click(function() {
-		SC.stream('/tracks/' + tracklist[i].id).then(function(player){
-	  		player.pause();
-		});
-	});
-
-	$("#next-button").click(function() {
-		var arrayLength = tracklist.length; //defines array length
-		for (var i = 0; i < arrayLength; i++) { //handling ability to only loop till end of array
-		    	SC.stream('/tracks/' + tracklist[i].id).then(function(player){
-	  			player.play();
-	  			assign_information(i);
-			});
-		};
-	});
-
-	$("#back-button").click(function() {
-		var arrayLength = tracklist.length; //defines array length
-		for (var i = 0; i < arrayLength; i--) { //handling ability to only loop till end of array
-		    	SC.stream('/tracks/' + tracklist[i].id).then(function(player){
-	  			player.play();
-			});
-		};
-	});
+$("#stop-button").click(function() {
 
 });
 
+$("#next-button").click(function() {
+	i = i + 1;
+	SC.stream('/tracks/' + tracklist[i].id).then(function(player){
+		player.play();
+		assign_information(i);
+	});
+});
+
+$("#back-button").click(function() {
+	i = i - 1;
+	SC.stream('/tracks/' + tracklist[i].id).then(function(player){
+		player.play();
+		assign_information(i);
+	});
+});
+
 assign_information = function(i) {
+	$("#artist").empty();
+  	$("#profile").empty();
+  	$("#title").empty();
+  	$("#description").empty();
+  	$("#genre").empty();
+  	$("#release").empty();
+
 	$("#artist").append(artist);
   	$("#profile").append(tracklist[i].permalink_url);
   	$("#title").append(tracklist[i].title);
