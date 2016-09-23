@@ -81,7 +81,7 @@ assign_information = function(i) {
   	$("#genre").append(tracklist[i].genre);
   	$("#release").append(tracklist[i].release_year);
   	$("#album-artwork").attr("src", tracklist[i].artwork_url);
-}
+};
 
 
 
