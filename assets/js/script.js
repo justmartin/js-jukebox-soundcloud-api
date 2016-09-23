@@ -29,6 +29,7 @@ $(document).ready(function() {
 });
 
 $("#search-sc-button").click(function() {
+	$("#song-titles").empty();
 	artist = $("#artist-input").val();
 	SC.get('/tracks', {q: artist}).then(function(tracks) {
 		i = 0;
@@ -82,6 +83,3 @@ assign_information = function(i) {
   	$("#release").append(tracklist[i].release_year);
   	$("#album-artwork").attr("src", tracklist[i].artwork_url);
 };
-
-
-
