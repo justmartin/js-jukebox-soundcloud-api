@@ -23,11 +23,12 @@
 // Artwork
 
 $(document).ready(function() {
-	SC.initialize({
-	  client_id: "9a1358c581fbce53ea61cd78cd57768f"
+	SC.initialize({ 
+	  client_id: "9a1358c581fbce53ea61cd78cd57768f" //enters personal account id from SC
 	});
 });
 
+//takes the user input and searches SC for relevant artist, puts it into an array, and lists the titles
 $("#search-sc-button").click(function() {
 	$("#song-titles").empty();
 	artist = $("#artist-input").val();
@@ -40,6 +41,7 @@ $("#search-sc-button").click(function() {
 	});
 });
 
+//plays the songs in the array in incremental order
 $("#play-button").click(function() {
 	SC.stream('/tracks/' + tracklist[i].id).then(function(player){
   		player.play();
@@ -51,6 +53,7 @@ $("#play-button").click(function() {
 	});
 });
 
+//skips to next song in array by index and assigns info
 $("#next-button").click(function() {
 	i = i + 1;
 	SC.stream('/tracks/' + tracklist[i].id).then(function(player){
@@ -59,6 +62,7 @@ $("#next-button").click(function() {
 	});
 });
 
+//skips to previous song is array by index and assigns info
 $("#back-button").click(function() {
 	i = i - 1;
 	SC.stream('/tracks/' + tracklist[i].id).then(function(player){
@@ -67,6 +71,7 @@ $("#back-button").click(function() {
 	});
 });
 
+//function that erases current artist info and replaces it with new
 assign_information = function(i) {
 	$("#artist").empty();
   	$("#profile").empty();
