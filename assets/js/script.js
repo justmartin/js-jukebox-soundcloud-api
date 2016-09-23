@@ -43,11 +43,11 @@ $("#play-button").click(function() {
 	SC.stream('/tracks/' + tracklist[i].id).then(function(player){
   		player.play();
   		assign_information(i);
+
+  		$("#stop-button").click(function() {
+  			player.pause();
+		});
 	});
-});
-
-$("#stop-button").click(function() {
-
 });
 
 $("#next-button").click(function() {

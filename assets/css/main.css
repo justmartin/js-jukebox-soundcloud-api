@@ -11,6 +11,10 @@ div {
 	font-size: 25px;
 }
 
+label {
+	font-size: 15px;
+}
+
 .container {
 	width: 80%;
 }
