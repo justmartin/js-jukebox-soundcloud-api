@@ -1,4 +1,4 @@
-html {
+body {
 	font-family: 'Megrim', cursive;
 	background-color: #dddddd;
 }
@@ -9,6 +9,10 @@ nav {
 
 div {
 	font-size: 25px;
+}
+
+.container {
+	width: 80%;
 }
 
 #main-title {
@@ -35,4 +39,14 @@ div {
   -webkit-box-shadow: 0 1px 0 0 orange;
   -moz-box-shadow: 0 1px 0 0 orange;
   box-shadow: 0 1px 0 0 orange;
+}
+
+footer.page-footer {
+    margin-top: 20px;
+    padding-top: 0px;
+    background-color: #ff3a00;
+}
+
+#footer {
+	font-size: 20px;
 }
