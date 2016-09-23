@@ -45,6 +45,14 @@ label {
   box-shadow: 0 1px 0 0 orange;
 }
 
+.api-font {
+	font-family: 'Poiret One', cursive;
+}
+
+#title {
+	color: #26a69a;
+}
+
 footer.page-footer {
     margin-top: 20px;
     padding-top: 0px;
