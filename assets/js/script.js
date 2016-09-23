@@ -60,7 +60,6 @@ $("#next-button").click(function() {
 	if (i < tracklist.length) {
 		i = i + 1;
 	};
-
 	
 	SC.stream('/tracks/' + tracklist[i].id).then(function(player){
 		player.play();
@@ -73,6 +72,7 @@ $("#back-button").click(function() {
 	if (i > 0) {
 		i = i - 1;
 	};
+	
 	SC.stream('/tracks/' + tracklist[i].id).then(function(player){
 		player.play();
 		assign_information(i);
