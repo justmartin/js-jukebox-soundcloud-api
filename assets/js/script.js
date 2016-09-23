@@ -44,6 +44,7 @@ $("#search-sc-button").click(function() {
 //plays the songs in the array in incremental order
 $("#play-button").click(function() {
 	SC.stream('/tracks/' + tracklist[i].id).then(function(player){
+		jukebox = player;
   		player.play();
   		assign_information(i);
 
@@ -55,7 +56,12 @@ $("#play-button").click(function() {
 
 //skips to next song in array by index and assigns info
 $("#next-button").click(function() {
-	i = i + 1;
+	console.log(i);
+	if (i < tracklist.length) {
+		i = i + 1;
+	};
+
+	
 	SC.stream('/tracks/' + tracklist[i].id).then(function(player){
 		player.play();
 		assign_information(i);
@@ -64,7 +70,9 @@ $("#next-button").click(function() {
 
 //skips to previous song is array by index and assigns info
 $("#back-button").click(function() {
-	i = i - 1;
+	if (i > 0) {
+		i = i - 1;
+	};
 	SC.stream('/tracks/' + tracklist[i].id).then(function(player){
 		player.play();
 		assign_information(i);
